@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.0;netstandard2.0</TargetFrameworks>
@@ -10,8 +10,11 @@
     <RepositoryUrl>https://github.com/tonygiang/CLSS.Types.MemoizedFunc</RepositoryUrl>
     <PackageTags>CLSS</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.1</Version>
-    <PackageReleaseNotes>- Reduce comment redundancy.</PackageReleaseNotes>
+    <Version>1.2</Version>
+    <PackageReleaseNotes>
+      - Remove the dependency on System.ValueTuple on .NET Standard 2.0.
+      - Add language-sensitive syntax highlighting in README file.
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,8 +24,10 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

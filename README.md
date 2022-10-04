@@ -8,7 +8,7 @@ Memoization is a common optimization technique for pure functions. Computed resu
 
 `MemoizedFunc` is a type that encapsulates any function with at least 1 argument and automatically takes care of the memoization process for you. Afterward, you can invoke the `MemoizedFunc` similarly to how you would invoke a `System.Func` object.
 
-```
+```csharp
 using CLSS;
 
 public int Square(int x) { return x * x; }
@@ -21,7 +21,7 @@ var memoizedCube = MemoizedFunc<int, int>.From(x => x * x * x);
 
 The memoized result dictionary is publicly exposed, so you can even pre-populate it with known results.
 
-```
+```csharp
 using CLSS;
 
 MemoizedFunc<int, int> Factorial = null;
@@ -41,7 +41,7 @@ Console.WriteLine($"hot run: {(DateTime.Now - startTime).TotalMilliseconds}ms");
 
 `MemoizedFunc` does not and cannot check if the function it is encapsulating is pure or not. This should be ensured by you. Although by accepting impure functions, it can lead to some interesting use case.
 
-```
+```csharp
 using CLSS;
 using UnityEngine;
 
